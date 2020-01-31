@@ -8,7 +8,7 @@ import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloClient, gql } from "apollo-boost"; // bundle of small libraries,
 import { store, persistor } from "./redux/store";
-
+import { resolvers, typeDefs } from "./graphql/resolvers";
 import "./index.css";
 import App from "./App";
 
@@ -20,7 +20,15 @@ const httpLink = createHttpLink({
 const cache = new InMemoryCache();
 const client = new ApolloClient({
   link: httpLink,
-  cache
+  cache,
+  typeDefs,
+  resolvers
+});
+
+client.writeData({
+  data: {
+    cartHidden: true
+  }
 });
 
 ReactDOM.render(
