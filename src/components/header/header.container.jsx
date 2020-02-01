@@ -13,7 +13,7 @@ const HeaderContainer = () => {
   return (
     <Query query={GET_CART_HIDDEN}>
       {({ data: { cartHidden } }) => {
-        return <Header hiddem={cartHidden} />;
+        return <Header hidden={cartHidden} />;
       }}
     </Query>
   );
